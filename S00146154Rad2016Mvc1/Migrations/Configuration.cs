@@ -20,7 +20,6 @@ namespace S00146154Rad2016Mvc1.Migrations
             context.Users.AddOrUpdate(u => u.UserName,
     new ApplicationUser
     {
-
         UserName = "Admin",
         Email = "JoeGouldie@College.ie",
         EmailConfirmed = true,
@@ -45,7 +44,7 @@ namespace S00146154Rad2016Mvc1.Migrations
                 });
             context.SaveChanges();
 
-            ApplicationUser admin = manager.FindByEmail("JoeGouldie@College.ie");
+            ApplicationUser admin = manager.FindByEmail("JoeGouldie1@College.ie");
             if (admin != null)
             {
                 manager.AddToRoles(admin.Id, new string[] { "Admin", "member", "ClubAdmin" });
