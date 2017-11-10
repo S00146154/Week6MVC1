@@ -181,8 +181,19 @@
     <Compile Include="Migrations\201710271042304_dateJoined.Designer.cs">
       <DependentUpon>201710271042304_dateJoined.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711101017310_NamesAdded.cs" />
+    <Compile Include="Migrations\201711101017310_NamesAdded.Designer.cs">
+      <DependentUpon>201711101017310_NamesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711101032275_ClubsAdded.cs" />
+    <Compile Include="Migrations\201711101032275_ClubsAdded.Designer.cs">
+      <DependentUpon>201711101032275_ClubsAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ClubModels\Club.cs" />
+    <Compile Include="Models\ClubModels\ClubEvent.cs" />
+    <Compile Include="Models\ClubModels\Members.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -261,6 +272,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710271042304_dateJoined.resx">
       <DependentUpon>201710271042304_dateJoined.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711101017310_NamesAdded.resx">
+      <DependentUpon>201711101017310_NamesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711101032275_ClubsAdded.resx">
+      <DependentUpon>201711101032275_ClubsAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

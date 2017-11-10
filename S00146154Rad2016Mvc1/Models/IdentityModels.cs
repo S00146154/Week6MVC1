@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using Rad2016SampleWepApp.Models.ClubModels;
 
 namespace S00146154Rad2016Mvc1.Models
 {
@@ -25,6 +26,12 @@ namespace S00146154Rad2016Mvc1.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        // These are created in 'ClubModels' in the Models folder
+        public DbSet<Club> Clubs { get; set;}
+        public DbSet<Member> Members { get; set; }
+        public DbSet<ClubEvent> ClubEvents { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -1,5 +1,7 @@
 namespace S00146154Rad2016Mvc1.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System;
     using System.Data.Entity;
@@ -14,21 +16,40 @@ namespace S00146154Rad2016Mvc1.Migrations
             ContextKey = "S00146154Rad2016Mvc1.Models.ApplicationDbContext";
         }
 
-       protected override void Seed(S00146154Rad2016Mvc1.Models.ApplicationDbContext context)
+        protected override void Seed(S00146154Rad2016Mvc1.Models.ApplicationDbContext context)
         {
-            /*
+            var manager =
+                 new UserManager<ApplicationUser>(
+                     new UserStore<ApplicationUser>(context));
+
+            var roleManager =
+                new RoleManager<IdentityRole>(
+                    new RoleStore<IdentityRole>(context));
+
+            context.Roles.AddOrUpdate(r => r.Name,
+                new IdentityRole { Name = "Admin" }
+                );
+            context.Roles.AddOrUpdate(r => r.Name,
+                new IdentityRole { Name = "ClubAdmin" }
+                );
+            context.Roles.AddOrUpdate(r => r.Name,
+                new IdentityRole { Name = "member" }
+                );
+
+            PasswordHasher ps = new PasswordHasher();
+
             context.Users.AddOrUpdate(u => u.UserName,
-    new ApplicationUser
-    {
-        UserName = "Admin",
-        Email = "JoeGouldie@College.ie",
-        EmailConfirmed = true,
-        JoinDate = DateTime.Now,
-        SecurityStamp = Guid.NewGuid().ToString(),
-        FirstName = "Paul",
-        Surname = "Powell",
-        PasswordHash = ps.HashPassword("Ppowell$1")
-    });
+                new ApplicationUser
+                {
+                    UserName = "Admin",
+                    Email = "s00146154@itsligo.ie",
+                    EmailConfirmed = true,
+                    dateJoined = DateTime.Now,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    Firstname = "Joe",
+                    Lastname = "Gouldie",
+                    PasswordHash = ps.HashPassword("ILikeTrains")
+                });
 
             context.Users.AddOrUpdate(u => u.UserName,
                 new ApplicationUser
@@ -38,18 +59,18 @@ namespace S00146154Rad2016Mvc1.Migrations
                     EmailConfirmed = true,
                     dateJoined = DateTime.Now,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    FirstName = "Rad",
-                    Surname = "Paulner",
+                    Firstname = "Rad",
+                    Lastname = "Paulner",
                     PasswordHash = ps.HashPassword("radP2016$1")
                 });
             context.SaveChanges();
 
-            ApplicationUser admin = manager.FindByEmail("JoeGouldie1@College.ie");
+            ApplicationUser admin = manager.FindByEmail("s00146154@itsligo.ie");
             if (admin != null)
             {
                 manager.AddToRoles(admin.Id, new string[] { "Admin", "member", "ClubAdmin" });
             }
-            */
+
         }
     }
 }
